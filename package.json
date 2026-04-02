@@ -1,0 +1,29 @@
+{
+    "name": "github-streak-stats-api",
+    "version": "1.0.0",
+    "description": "API for fetching GitHub streak stats",
+    "type": "module",
+    "engines": {
+        "node": ">=18.x"
+    },
+    "scripts": {
+
+    },
+    "dependencies": {
+
+    },
+    "devDependencies": {
+
+    },
+    "keywords": [
+
+    ],
+    "author": "Your Name",
+    "license": "MIT",    
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "homepage": ""
+
+}
