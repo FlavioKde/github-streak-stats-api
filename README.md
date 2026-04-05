@@ -1,6 +1,4 @@
-# 🔥GitHub Readme Streak Stats - Vercel Self-Hosted Fork
-
-GitHub statistics generator based on the GitHub API. Implemented in JavaScript/Node.js, with a modular architecture, unit tests and integration, and deployed on Vercel using serverless functions.
+# 🔥GitHub Streak Stats Api - Vercel Self-Hosted
 
 A modern, self‑hosted, serverless‑optimized fork of
 
