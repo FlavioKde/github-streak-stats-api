@@ -7,23 +7,38 @@
         "node": ">=18.x"
     },
     "scripts": {
-
+    "dev": "vercel dev",
+    "deploy": "vercel --prod",
+    "start": "node api/streak/svg.js",
+    "build": "echo 'No build step required'",
+    "format": "prettier --write .",
+    "clean": "rm -rf node_modules package-lock.json",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:watch": "vitest"
     },
     "dependencies": {
-
+    "node-fetch": "^3.3.2"
     },
     "devDependencies": {
-
+    "prettier": "^3.8.1",
+    "vitest": "^4.0.18"
     },
     "keywords": [
-
+    "github",
+    "streak",
+    "stats",
+    "vercel",
+    "serverless",
+    "api",
+    "fork"
     ],
-    "author": "Your Name",
+    "author": "FlavioKde",
     "license": "MIT",    
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "https://github.com/FlavioKde/github-streak-stats-api.git"
     },
-    "homepage": ""
+    "homepage": "https://github.com/FlavioKde/github-streak-stats-api#readme"
 
 }
