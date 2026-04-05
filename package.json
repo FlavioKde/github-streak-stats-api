@@ -10,7 +10,6 @@
     "dev": "vercel dev",
     "deploy": "vercel --prod",
     "start": "node api/streak/svg.js",
-    "build": "echo 'No build step required'",
     "format": "prettier --write .",
     "clean": "rm -rf node_modules package-lock.json",
     "test": "vitest",
