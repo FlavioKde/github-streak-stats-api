@@ -1,21 +1,26 @@
 # 🔥GitHub Streak Stats Api - Vercel Self-Hosted
 
-A modern, self‑hosted, serverless‑optimized fork of
+> 🚀 Self-hosted GitHub streak stats with zero shared limits and full control.
 
-**Custom fork of [GitHub Readme Streak Stats](https://github.com/denvercoder1/github-readme-streak-stats)**
+A modern, self‑hosted, serverless GitHub streak stats API.
+
+**Inspired by [GitHub Readme Streak Stats](https://github.com/denvercoder1/github-readme-streak-stats).**
 
 
-This fork was created to solve a real problem:
+This project was created to solve a real-world problem:
 
 concurrency issues, rate limits, and unreliable data when using shared public endpoints.
-The original project is excellent, but even when deploying it to Vercel or Heroku, all requests still passed through the author’s server — meaning:
-• 	shared rate limits
-• 	random failures
-• 	inconsistent streak data
-• 	no true self‑hosting
-This fork fixes that completely.
 
-## Why this fork exists
+The original project is excellent, but even when deploying it to Vercel or Heroku, all requests still passed through the author’s server — meaning:
+
+- 	shared rate limits
+- 	random failures
+- 	inconsistent streak data
+- 	no true self‑hosting
+
+This project solves those issues completely.
+
+## Why this project exists
 
 I wanted a version that:
 
@@ -38,59 +43,63 @@ So I rebuilt the project with:
 
 Now every user gets their own private instance, with their own GitHub rate limits and zero interference from others.
 
-## Stack
+## Tech Stack
 
-This fork is built with:
+This project is built with:
 
 - 	Node.js (ESM)
 - 	Vercel Serverless Functions
 - 	GitHub GraphQL API
 - 	Pure SVG rendering (no canvas, no images)
-- 	Multi‑layer caching
+
+## Caching Strategy
+
 - 	Vercel CDN cache
 - 	1‑hour internal cache
 - 	12‑hour historical cache
-- 	Clean Architecture
-- 	Domain
-- 	Infrastructure
-- 	Presentation
-- 	API
--   Vitest for testing
+
+## Testing
+
+-   Unit + integration testing with Vitest
 
 ## Deploy your own instance (recommended)
 
-Each user deploys their own private API.
-This avoids shared limits and ensures 100% reliability.
+## 🚀 Deploy your own instance
 
-This version adds serverless API routes and one-click deployment on Vercel.
+Each user runs their own private API on Vercel.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/FlavioKde/github-readme-streak-stats)
+No shared limits. No external dependencies.
 
-## ✨ Features added in this fork
+### One-click deploy (option 1)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/FlavioKde/github-streak-stats-api)
+
+### Steps
+
+1. Click the deploy button  
+2. Connect your GitHub account  
+3. (Optional) Add your `GITHUB_TOKEN`  
+4. Deploy  
+
+Your API will be available at:
+
+https://your-project.vercel.app/api/streak/svg?user=YOUR_USERNAME
+
+### Option 2: Use public endpoint (LIMITED)
+
+You can use: `https://tu-api.vercel.app/api/stats?user=USUARIO`
+⚠️ **Rate limits apply** - For personal use, auto-expand is recommended
+
+## ✨ Features added in this project
+
 - ✅ **Serverless API Routes** - Runs on Vercel Functions
 - ✅ **One-click deployment** - Deploy instantly with Vercel
 - ✅ **Automatic scaling** - Vercel handles traffic spikes
 - ✅ **Environment variables** - Easy configuration via Vercel dashboard
 
-## 🤔 ¿How does this work?
-
-### Option 1: Auto-deployment (RECOMENDED)
-Each user deploys their **own instance** in their Vercel account:
-1. Fork this repository
-2. Deploy to Vercel with one click
-3. Use **your own** Serverless Functions
-4. **without shared limits**, your total control
-
-## 🚀 Desployment in 2 minuts
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=YOUR_URL)
-
-### Option 2: Use public endpoint (LIMITED)
-You can use: `https://tu-api.vercel.app/api/stats?user=USUARIO`
-⚠️ **Rate limits apply** - For personal use, auto-expand is recommended
-
 ## 🧠 How it works
 
-This fork uses a clean, modular architecture:
+This project uses a clean, modular architecture:
 
 - /api → serverless endpoints
 - /lib/github → GitHub API integration
@@ -101,9 +110,11 @@ This fork uses a clean, modular architecture:
 - /lib/themes → theme system
 
 Full details in:
+
 📘 docs/architecture.md
 
 Deployment guide:
+
 📘 docs/vercel-guide.md
 
 ## 🎨 Themes Preview
@@ -171,7 +182,7 @@ https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=Flavio
 
 ## 📈 Change history
 
-Consult [CHANGELOG.md](CHANGELOG.md) to see all the modifications specific to this fork for Vercel.
+Consult [CHANGELOG.md](CHANGELOG.md) to see all the modifications specific to this project for Vercel.
 
 ## 🧪 Testing
 
@@ -183,7 +194,7 @@ See:
 
 ## 📋 Documentation
 
-- **[CHANGELOG.md](CHANGELOG.md)** - Change history of this fork
+- **[CHANGELOG.md](CHANGELOG.md)** - Change history of this project
 - **[Original doc](docs/)** - Features and use of the base project 
 - **[Doc to Vercel deploy](docs/vercel-guide.md)** -(docs/vercel-guide.md)
 - **[architecture](docs/architecture.md)** -(docs/architecture.md)
@@ -191,7 +202,8 @@ See:
 
 ## 🛣️ Roadmap
 
-This fork is actively evolving. Planned features include:
+This project is actively evolving. Planned features include:
+
 - 	Customizable error rendering
 - 	Internationalization (i18n)
 - 	Extended GitHub statistics (PRs, issues, languages, activity heatmaps)
@@ -209,7 +221,7 @@ Full roadmap:
 Based on the amazing work of:
 https://github.com/denvercoder1/github-readme-streak-stats
 
-This fork exists thanks to that foundation
+This project exists thanks to that foundation
 
 ## 🧩 License
 
