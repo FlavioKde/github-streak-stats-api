@@ -45,7 +45,7 @@ Now every user gets their own private instance, with their own GitHub rate limit
 
 ## Tech Stack
 
-This project is built with:
+Built with:
 
 - 	Node.js (ESM)
 - 	Vercel Serverless Functions
@@ -60,17 +60,20 @@ This project is built with:
 
 ## Testing
 
--   Unit + integration testing with Vitest
+- Unit + integration testing with Vitest
+- This project uses Vitest and follows a clean testing strategy.
 
-## Deploy your own instance (recommended)
+See:
 
-## 🚀 Deploy your own instance
+📘 docs/architecture.md → Testing
+
+## 🚀 Deploy your own instance (recommended)
 
 Each user runs their own private API on Vercel.
 
 No shared limits. No external dependencies.
 
-### One-click deploy (option 1)
+### One-click deploy
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/FlavioKde/github-streak-stats-api)
 
@@ -84,11 +87,6 @@ No shared limits. No external dependencies.
 Your API will be available at:
 
 https://your-project.vercel.app/api/streak/svg?user=YOUR_USERNAME
-
-### Option 2: Use public endpoint (LIMITED)
-
-You can use: `https://tu-api.vercel.app/api/stats?user=USUARIO`
-⚠️ **Rate limits apply** - For personal use, auto-expand is recommended
 
 ## ✨ Features added in this project
 
@@ -129,68 +127,65 @@ Use any theme like this:
 
 Examples:
 
-🌑 Dark
+### 🌑 Dark
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=dark&v=1
 
-🌕 Light
+### 🌕 Light
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=light&v=1
 
-🧛 Dracula
+### 🧛 Dracula
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=dracula&v=1
 
-❄️ Nord
+### ❄️ Nord
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=nord&v=1
 
-🎌 Tokyo Night
+### 🎌 Tokyo Night
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=tokyo&v=1
 
-🌙 Solarized Dark
+### 🌙 Solarized Dark
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=solarized_dark&v=1
 
-🌅 Solarized Light
+### 🌅 Solarized Light
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=solarized_light&v=1
 
-🎨 Monokai
+### 🎨 Monokai
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=monokai&v=1
 
-🟫 Gruvbox Dark
+### 🟫 Gruvbox Dark
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=gruvbox_dark&v=1
 
-🟨 Gruvbox Light
+### 🟨 Gruvbox Light
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=gruvbox_light&v=1
 
-🐱 Catppuccin Latte
+### 🐱 Catppuccin Latte
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=catppuccin_latte&v=1
 
-🐱 Catppuccin Frappe
+### 🐱 Catppuccin Frappe
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=catppuccin_frappe&v=1
 
-🐱 Catppuccin Macchiato
+### 🐱 Catppuccin Macchiato
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=catppuccin_macchiato&v=1
 
-🐱 Catppuccin Mocha
+### 🐱 Catppuccin Mocha
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=catppuccin_mocha&v=1
 
-🔵 One Dark Pro
+### 🔵 One Dark Pro
 https://github-readme-streak-stats-ashy-mu.vercel.app/api/streak/svg?user=FlavioKde&theme=one_dark_pro&v=1
 
-**Important Note**
+**Cache Note**
 
 - The parameter &v=1 is to break the cache when you update the design.
-- If you change something, raise it to &v=2, &v=3, etc.
+- Use the `&v=` parameter to invalidate cache after updates.
+
+Example:
+- &v=1
+- &v=2
+- &v=3
 
 
 ## 📈 Change history
 
 Consult [CHANGELOG.md](CHANGELOG.md) to see all the modifications specific to this project for Vercel.
-
-## 🧪 Testing
-
-This project uses Vitest and follows a clean testing strategy.
-See:
-
-📘 docs/architecture.md → Testing
-
 
 ## 📋 Documentation
 
@@ -221,7 +216,7 @@ Full roadmap:
 Based on the amazing work of:
 https://github.com/denvercoder1/github-readme-streak-stats
 
-This project exists thanks to that foundation
+This project builds on that foundation
 
 ## 🧩 License
 
