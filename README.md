@@ -115,6 +115,17 @@ Deployment guide:
 
 📘 docs/vercel-guide.md
 
+## ⚡ Quick Example
+
+Use it in your README:
+
+![GitHub Streak](https://github-streak-stats-api.vercel.app/api/streak/svg?user=FlavioKde&theme=dark)
+
+
+API endpoint:
+
+https://your-project.vercel.app/api/streak/svg?user=YOUR_USERNAME
+
 ## 🎨 Themes Preview
 
 Use any theme like this:
@@ -191,7 +202,7 @@ Consult [CHANGELOG.md](CHANGELOG.md) to see all the modifications specific to th
 
 - **[CHANGELOG.md](CHANGELOG.md)** - Change history of this project
 - **[Original doc](docs/)** - Features and use of the base project 
-- **[Doc to Vercel deploy](docs/vercel-guide.md)** -(docs/vercel-guide.md)
+- **[Vercel deploy](docs/vercel-guide.md)** -(docs/vercel-guide.md)
 - **[architecture](docs/architecture.md)** -(docs/architecture.md)
 
 
