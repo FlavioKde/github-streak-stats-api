@@ -119,7 +119,7 @@ Deployment guide:
 
 Use it in your README:
 
-![GitHub Streak](https://github-streak-stats-api.vercel.app/api/streak/svg?user=FlavioKde&theme=dark)
+![GitHub Streak](https://github-streak-stats-api.vercel.app/api/streak/svg?user=FlavioKde&theme=one_dark_pro)
 
 
 API endpoint:
