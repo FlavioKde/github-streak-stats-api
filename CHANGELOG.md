@@ -31,3 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 
 ## Version Links
+
+[1.0.0]: https://github.com/FlavioKde/github-streak-stats-api/tags
+
+
+---
