@@ -19,21 +19,23 @@ This project is designed for true self‑hosting:
 - every user uses their own GitHub rate limits
 - no shared traffic
 - no bottlenecks
-- no dependency on the original author
+- no dependency on this project
 
 Deploying your own instance ensures 100% reliability.
 
 
 
-## Prerrequisites
+## Prerequisites
+
 - Account in [Vercel](https://vercel.com) (free)
 - Account in GitHub
 - This repository fork (optional but recommended)
-No GitHub token is required.
+
+No GitHub token is required to run the project.
 No database is required.
 No configuration is required.
 
-## Methode 1: Deploy with one click (RECOMENDED)
+## Method 1: Deploy with one click (RECOMMENDED)
 
 Click the button below:
 
@@ -53,6 +55,9 @@ https://<your-project>.vercel.app/api/streak/svg?user=YOUR_GITHUB_USERNAME
 
 ```
 
+Note: the root URL will return 404. This is expected.
+Use the /api/streak/svg endpoint instead.
+
 ## Method 2: Manual deployment
 
 ```bash
@@ -65,10 +70,10 @@ npm i -g vercel
 # 3. Deployment init
 vercel
 
-# 4. Follow the instruccions
+# 4. Follow the instructions
 (Vercel will ask for project name, scope, etc.)
 
-# 5. To producción:
+# 5. To production:
 vercel --prod
 
 ```
@@ -81,6 +86,11 @@ https://<your-project>.vercel.app
 ```
 
 ## 🧪 Testing your deployment
+
+If everything is working correctly, you should see a generated SVG image.
+
+If you see an error SVG, check the troubleshooting section below.
+
 
 Try opening:
 
@@ -100,33 +110,19 @@ Add this to your README:
 
 ```
 
-## ⚙️ Optional configuration
-
-This project does not require environment variables.
-Everything works out of the box.
-
 ## ⚙️ Optional: Environment Variables (Advanced Users)
 
-This project works without any environment variables.
+This project works out of the box with no configuration.
 
-All GitHub contribution data is fetched using public GraphQL queries, so no authentication is required.
-However, advanced users may optionally configure:
- (optional)
+However, you can optionally provide:
 
-Use this if you want:
--	higher GitHub rate limits
-- 	more stable development
--	to bypass GitHub’s anonymous request throttling
- (optional)
-
-Useful only for local testing.
-If these variables are not set, the project will still work normally.
+### GITHUB_TOKEN
 
 ## 🔐 GitHub Token (Optional but recommended)
 
 This project works without a GitHub token using public GraphQL queries.
 
-However, providing a token is recommended for:
+However, providing a `GITHUB_TOKEN` is recommended for:
 
 - higher rate limits
 - better reliability
@@ -144,7 +140,7 @@ GITHUB_TOKEN=your_token_here
 
 ❌ The SVG shows an error
 Check that:
-• 	the  parameter is correct
+• 	the  `user`parameter is correct
 • 	your GitHub username exists
 • 	your Vercel project is deployed correctly
 ❌ Vercel shows a 500 error
