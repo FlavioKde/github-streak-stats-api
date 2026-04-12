@@ -1,7 +1,7 @@
 # Vercel deployment guide
 
 This guide explains how to deploy your own private instance of
-GitHub Readme Streak Stats – Vercel Fork.
+GitHub Streak Stats Api
 Each user runs their own serverless API, with no shared limits and no dependency on external servers.
 
 ## 🎯 Why deploy your own instance?
@@ -14,12 +14,13 @@ This causes:
 - inconsistent streak data
 - random failures
 
-This fork is designed for true self‑hosting:
+This project is designed for true self‑hosting:
 - every user gets their own API
 - every user uses their own GitHub rate limits
 - no shared traffic
 - no bottlenecks
 - no dependency on the original author
+
 Deploying your own instance ensures 100% reliability.
 
 
@@ -36,7 +37,7 @@ No configuration is required.
 
 Click the button below:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/FlavioKde/github-readme-streak-stats)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/FlavioKde/github-streak-stats-api)
 
 Deploy with Vercel (vercel.com)
 Vercel will:
@@ -53,9 +54,10 @@ https://<your-project>.vercel.app/api/streak/svg?user=YOUR_GITHUB_USERNAME
 ```
 
 ## Method 2: Manual deployment
+
 ```bash
-# 1. Clone this fork
-git clone https://github.com/FlavioKde/github-readme-streak-stats.git
+# 1. Clone this project
+git clone https://github.com/FlavioKde/github-streak-stats-api.git
 
 # 2. Install Vercel CLI
 npm i -g vercel
@@ -100,7 +102,7 @@ Add this to your README:
 
 ## ⚙️ Optional configuration
 
-This fork does not require environment variables.
+This project does not require environment variables.
 Everything works out of the box.
 
 ## ⚙️ Optional: Environment Variables (Advanced Users)
@@ -169,7 +171,7 @@ Use the  parameter:
 ## ❓ FAQ
 
 **Do I need a GitHub token?**
-No. This fork uses public GitHub GraphQL queries.
+No. This project uses public GitHub GraphQL queries.
 
 **Does this consume my GitHub rate limit?**
 Yes — but only for your own instance, not shared with others.
