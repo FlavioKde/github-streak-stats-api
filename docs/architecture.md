@@ -1,7 +1,8 @@
 # Purpose of this document
 
-This document describes the architecture of the:  
-**Custom fork of [GitHub Readme Streak Stats](https://github.com/denvercoder1/github-readme-streak-stats) optimized for Vercel deployment.**
+This document describes the architecture of the: 
+
+**[GitHub Readme Streak Stats](https://github.com/FlavioKde/github-streak-stats-api) optimized for Vercel deployment**
 
 Its goals are:
 
@@ -17,7 +18,7 @@ Its goals are:
 
 This document is intended for:
 
-- Myself (the fork's author)
+- Myself (author)
 - Anyone who wants to understand, extend, or deploy this project
 
 
@@ -687,4 +688,3 @@ This separation allows:
 - swapping GraphQL/REST if needed
 - adding new metrics without touching the core
 - better testability
-
