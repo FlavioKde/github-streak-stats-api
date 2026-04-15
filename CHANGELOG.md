@@ -1,17 +1,21 @@
 # Changelog
 
-All notable changes in this repo will be documented in this file
+All notable changes in this project will be documented in this file
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
+
 ### Added
 ### Changed 
+
 ### Fixed
+- Documentation clarified regarding GitHub token requirement
+
 ### Removed
 
-## [1.0.0] - 26-04-10
+## [1.0.0] - 2026-04-10
 
 ### Added
 - Initial release of the self-hosted GitHub streak stats API
@@ -31,3 +35,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 
 ## Version Links
+
+[Unreleased]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/FlavioKde/github-streak-stats-api/releases/tag/v1.0.0
+
+
+---
