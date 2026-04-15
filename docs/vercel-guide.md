@@ -42,11 +42,46 @@ Click the button below:
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/FlavioKde/github-streak-stats-api)
 
 Deploy with Vercel (vercel.com)
+
 Vercel will:
 1. 	Clone the repository
-2. 	Create a new project
-3. 	Configure everything automatically
-4. 	Deploy your API in seconds
+2.  Create a new project
+3. 	Configure the project
+4. 	Prompt you to add environment variables
+
+## 🔐 GitHub Token (Required)
+
+This project requires a GitHub token to work.
+
+Without it, the API will return a configuration error.
+
+### Why?
+
+- GitHub GraphQL API requires authentication
+- Avoids strict anonymous rate limits
+- Ensures stable and reliable responses
+
+### How to create it
+
+1. Go to GitHub → Settings → Developer Settings → Personal Access Tokens
+2. Create a **Classic Token**
+3. Select:
+   - `public_repo`
+
+### Add it to Vercel
+
+Add the following environment variable:
+
+```bash
+
+GITHUB_TOKEN=your_token_here
+
+```
+
+Then deploy
+
+### After deployment
+
 When finished, your API will be available at:
 
 ```bash
@@ -55,8 +90,9 @@ https://<your-project>.vercel.app/api/streak/svg?user=YOUR_GITHUB_USERNAME
 
 ```
 
-Note: the root URL will return 404. This is expected.
-Use the /api/streak/svg endpoint instead.
+⚠️ Note:
+The root URL (/) will return 404.
+This is expected — this project only exposes API endpoints.
 
 ## Method 2: Manual deployment
 

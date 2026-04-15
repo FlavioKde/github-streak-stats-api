@@ -81,7 +81,7 @@ No shared limits. No external dependencies.
 
 1. Click the deploy button  
 2. Connect your GitHub account  
-3. (Optional) Add your `GITHUB_TOKEN`  
+3. Add your `GITHUB_TOKEN` (required)  
 4. Deploy  
 
 Your API will be available at:
