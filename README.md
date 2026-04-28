@@ -193,6 +193,29 @@ Example:
 - &v=2
 - &v=3
 
+## 🌍 Internationalization
+
+Use the `lang` query parameter:
+
+```txt
+/api?user=octocat&lang=es
+/api?user=octocat&lang=fr
+/api?user=octocat&lang=de
+```
+
+Default language: English.
+
+If a language is missing, it automatically falls back to English.
+
+## 🤝 Contributing Translations
+
+Want to add your language?
+
+1. Copy `src/lib/i18n/locales/en.js`
+2. Translate values
+3. Submit a Pull Request
+
+We welcome community translations!
 
 ## 📈 Change history
 
