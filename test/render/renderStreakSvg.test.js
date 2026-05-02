@@ -20,8 +20,9 @@ describe("renderStreakSvg", () => {
     const current = data.currentStreak.length;
     const longest = data.longestStreak.length;
     const total = data.totalContributions;
+    const t = (key) => key;
 
-    const svg = renderStreakSvg(data, theme);
+    const svg = renderStreakSvg(data, theme, t);
 
     
     expect(svg).toContain(`${current}`);
