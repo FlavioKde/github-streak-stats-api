@@ -96,4 +96,23 @@ describe("SVG Endppoint errors", () => {
             expect(res.body.toLowerCase()).toContain("unexpected error"); 
     });
 
+    it("should return error svg with spanish translation", async () => {
+        vi.spyOn(githubClient, "fetchUserContributions")
+          .mockRejectedValueOnce(new NotFoundError("User not found"));
+
+        const req = {
+              query: {user:"octocat", lang:"es"},
+              headers: {},
+            };
+
+            const res = createMockRes();
+
+            await handler(req, res);  
+            expect(res.statusCode).toBe(404);
+            expect(res.headers["Content-Type"]).toBe("image/svg+xml");
+            expect(res.body).toContain("<svg");
+            expect(res.body).toContain("Usuario de GitHub no encontrado");
+
+          });      
+
 });
