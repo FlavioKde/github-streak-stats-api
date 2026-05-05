@@ -39,7 +39,7 @@ export default async function handler(req, res) {
   } catch (error) {
 
 
-    handleSvgError(res, error);
+    handleSvgError(res, error, lang);
       
   }
 
