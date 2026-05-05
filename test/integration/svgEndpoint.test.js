@@ -15,7 +15,6 @@ vi.mock("../../lib/streak/calculateStreak.js", () => ({
   }),
 }));
 
-
 import handler from "../../api/streak/svg.js";
 
 
@@ -58,7 +57,54 @@ describe("SVG Endpoint (integration)", () => {
 
     expect(res.statusCode).toBe(200);
     expect(res.headers["Content-Type"]).toBe("image/svg+xml");
-    expect(res.body).toContain("svg");
+    expect(res.body).toContain("<svg");
    
   });
-});
+
+  it("should return spanish translation", async () => {
+    const req = {
+      query: { user: "octocat", lang: "es" },
+      headers: {},
+    };  
+
+    const res = createMockRes();
+
+    await handler(req, res);
+    expect(res.statusCode).toBe(200);
+    expect(res.headers["Content-Type"]).toBe("image/svg+xml");
+    expect(res.body).toContain("<svg");
+    expect(res.body).toContain("Actual");
+  });
+
+  it("should fallback to english for unsupported language", async () => {
+    const req = {
+      query: { user: "octocat", lang: "fr" },
+      headers: {},
+    };
+
+    const res = createMockRes();
+
+    await handler(req, res);
+    expect(res.statusCode).toBe(200);
+    expect(res.headers["Content-Type"]).toBe("image/svg+xml");
+    expect(res.body).toContain("<svg");
+    expect(res.body).toContain("Current");
+  });
+
+  it("should return default english translation", async () => {
+    const req = {
+      query: { user: "octocat", lang: "en" },
+      headers: {},
+    };
+
+    const res = createMockRes();
+
+    await handler(req, res);
+    expect(res.statusCode).toBe(200);
+    expect(res.headers["Content-Type"]).toBe("image/svg+xml");
+    expect(res.body).toContain("<svg");
+    expect(res.body).toContain("Current");
+  });  
+
+
+}); 
