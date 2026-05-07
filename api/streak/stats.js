@@ -22,17 +22,17 @@ export default async function handler(req, res) {
     }
    
     const contributions = await getCachedContributions(fetchUserContributions, user);
-    //const streakData = formatJsonResponse(contributions);
+
     const streakData = calculateStreak(contributions);
     const formattedResponse = formatJsonResponse(streakData, t);
 
    res.setHeader('Cache-Control', 'public, max-age=43200, s-maxage=43200, stale-while-revalidate=3600');
-   //res.status(200).json(streakData);
+   
     res.status(200).json(formattedResponse);
     
   } catch (error) {
    
-    handleJsonError(res, error);
+    handleJsonError(res, error, lang);
 
   }  
 
