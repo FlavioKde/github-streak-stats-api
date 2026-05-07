@@ -418,7 +418,12 @@ The project already includes a robust multi‑layer caching system:
 - 12‑hour internal cache for historical data
 Future improvements focus on optimizing these layers, not adding new ones.
 
-### Phase 1 — Customizable Error Rendering
+## Progress
+
+- [x] Completed
+- [ ] Planned
+
+### Phase 1 — [ ]Customizable Error Rendering
 
 Allow users to choose how error states are rendered, just like the main SVG.
 Features
@@ -427,7 +432,7 @@ Features
 - Option to reuse the user’s theme for errors
 - Localizable error messages
 
-### Phase 2 — Internationalization (i18n)
+### Phase 2 — [x] Internationalization (i18n)
 
 Enable multi‑language support for SVG and JSON outputs.
 Features
@@ -439,7 +444,7 @@ Features
 - error messages
 - optional JSON keys
 
-### Phase 3 — Extended GitHub Statistics
+### Phase 3 — [ ] Extended GitHub Statistics
 
 Since each user deploys their own instance, we can safely expand the scope of metrics without worrying about global rate limits.
 New metrics
@@ -466,7 +471,7 @@ Unified API
 
 ```
 
-### Phase 4 — Local Analytics & Insights
+### Phase 4 — [ ] Local Analytics & Insights
 
 Because each user hosts their own instance, optional analytics can be added without privacy concerns.
 
@@ -485,7 +490,7 @@ Features
 
 ```
 
-### Phase 5 — Theming System 2.0
+### Phase 5 — [ ] Theming System 2.0
 
 Deep customization for power users.
 
@@ -506,7 +511,7 @@ Features
 - One Dark Pro
 - Visual theme editor (future)
 
-### Phase 6 — Performance & Caching Enhancements
+### Phase 6 — [ ] Performance & Caching Enhancements
 
 The project already includes three layers of caching (Vercel, 1‑hour, 12‑hour).
 Future work focuses on optimizing these layers, not adding new ones.
@@ -521,7 +526,7 @@ Planned improvements
 - Retry logic for GitHub API
 - Better handling of rate limits (per user)
 
-### Phase 7 — Developer Experience & Extensibility
+### Phase 7 — [ ] Developer Experience & Extensibility
 
 Make the project easy to extend and contribute to.
 

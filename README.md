@@ -198,20 +198,25 @@ Example:
 Use the `lang` query parameter:
 
 ```txt
-/api?user=octocat&lang=es
-/api?user=octocat&lang=fr
-/api?user=octocat&lang=de
+/api/streak/svg?user=octocat&lang=en
+/api/streak/svg?user=octocat&lang=es
+
 ```
 
 Default language: English.
 
 If a language is missing, it automatically falls back to English.
 
+## Currently supported
+
+- `en`
+- `es`
+
 ## 🤝 Contributing Translations
 
 Want to add your language?
 
-1. Copy `src/lib/i18n/locales/en.js`
+1. Copy `lib/i18n/locales/en.js`
 2. Translate values
 3. Submit a Pull Request
 
@@ -224,22 +229,39 @@ Consult [CHANGELOG.md](CHANGELOG.md) to see all the modifications specific to th
 ## 📋 Documentation
 
 - **[CHANGELOG.md](CHANGELOG.md)** - Change history of this project
-- **[Original doc](docs/)** - Features and use of the base project 
-- **[Vercel deploy](docs/vercel-guide.md)** -(docs/vercel-guide.md)
-- **[architecture](docs/architecture.md)** -(docs/architecture.md)
+- **[Upstream documentation](docs/)** - Features and use of the base project 
+- **[Vercel deployment guide](docs/vercel-guide.md)** -(docs/vercel-guide.md)
+- **[Architecture](docs/architecture.md)** -(docs/architecture.md)
 
 
 ## 🛣️ Roadmap
 
-This project is actively evolving. Planned features include:
+This project is actively evolving. 
 
-- 	Customizable error rendering
-- 	Internationalization (i18n)
-- 	Extended GitHub statistics (PRs, issues, languages, activity heatmaps)
-- 	Optional visit tracking
-- 	Theme System 2.0
-- 	Plugin system
-- 	Documentation website
+## Progress
+
+- [x] Completed
+- [ ] Planned
+
+Planned features include:
+
+### Core features
+
+- [x] SVG GitHub streak stats
+- [x] Theme system
+- [x] Error handling
+- [x] Unit tests
+- [x] Integration tests
+- [x] Internationalization (i18n)
+
+### In progress / planned
+
+- [ ] Customizable error rendering
+- [ ] Extended GitHub statistics (PRs, issues, languages, activity heatmaps)
+- [ ] Optional visit tracking
+- [ ] Theme System 2.0
+- [ ] Plugin system
+- [ ] Documentation website
 
 Full roadmap:
 📘 docs/architecture.md → Roadmap
