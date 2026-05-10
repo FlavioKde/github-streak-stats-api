@@ -55,6 +55,10 @@ graph TD
             R4["sendSvgResponse.js"]
         end
 
+        subgraph Translator ["i18n/"]
+            Q1["locales/"]
+            Q2["index.js"]
+
         subgraph HTTP Utilities ["http/"]
             H1["handleJsonError.js"]
             H2["handleSvgError.js"]
@@ -112,8 +116,8 @@ Free of side effects and external dependencies.
 Handles communication with GitHub and caching.
 These modules can change without affecting the domain.
 
-- Presentation Layer `/lib/render`
-Responsible for producing SVG and JSON outputs.
+- Presentation Layer `/lib/render`, `lib/i18n`
+Responsible for producing SVG and JSON outputs and translate language.
 No business logic, no GitHub logic.
 
 - Cross‑cutting Utilities `/lib/shared`, `/lib/http`, `/lib/themes`
@@ -229,7 +233,7 @@ At a high level, the system processes a request in the following stages:
 #### Presentation: rendering the output
 
 - Based on the endpoint:
-- renderStreakSvg generates the SVG representation using the selected theme.
+- renderStreakSvg generates the SVG representation using the selected theme and language.
 - formatJsonResponse builds the JSON payload.
 - Themes are resolved via themes.js, while errors use a dedicated errorTheme.
 
@@ -316,12 +320,13 @@ Focus on isolated logic
 - `formatJsonResponse` (alternative output)
 - `buildYearBlocksFromDate` (build years blocks)
 - `githubResponse`(handle errors)
+- `i18n`(translator module)
 
 ### Integration tests
 
 Focus on module interaction
 
-- `handleSvgError`(handle svg errors)
+- `handleSvgError`(handle svg errors and translates error messages)
 - `svgEndpoint`(full request → SVG response)
 
 ### Mocking strategy
@@ -384,7 +389,7 @@ All tests live under:
 
 ```bash
 
-/test_js/
+/test/
 
 ```
 
@@ -392,7 +397,7 @@ All tests live under:
 
 ```bash
 
-test_js/
+test/
   streak/
     calculateStreak.test.js
     buildYearBlocks.test.js
@@ -403,6 +408,12 @@ test_js/
     validators.test.js
   github/
     githubResponse.test.js
+  i18n/
+    createTranslator.test.js
+    resolveLang.test.js
+  integration
+    handleSvgError.test.js
+    svgEndpoint.test,js    
 
 ```
 
