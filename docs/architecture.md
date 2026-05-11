@@ -58,6 +58,7 @@ graph TD
         subgraph Translator ["i18n/"]
             Q1["locales/"]
             Q2["index.js"]
+        end    
 
         subgraph HTTP Utilities ["http/"]
             H1["handleJsonError.js"]
