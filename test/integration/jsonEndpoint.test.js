@@ -34,6 +34,7 @@ const createMockRes = () => {
         return res;
     };
     res.json = (data) => {
+        res.setHeader('Content-Type', 'application/json');
         res.body = data;
         return res;
     };
@@ -47,24 +48,27 @@ describe("JSON Endpoint (integration)", () => {
             headers: {},
         };
         const res = createMockRes();
+
         await handler(req, res);
 
-      //  expect(res.status).toBe(200);
-        expect(res.status).toHaveBeenCalledWith(200);
-        expect(res.getHeader("Content-Type")).toBe("application/json");
-        expect(res.json).toHaveBeenCalledWith({
-            current_streak: 5,
-            longest_streak: 10,
+         expect(res.statusCode).toBe(200);
+         expect(res.body).toEqual({
+            current_streak: { length: 5 },
+            longest_streak: { length: 10 },
             total_contributions: 20,
             first_contribution_date: "2024-01-01",
             last_contribution_date: "2024-01-02",
-          /*  labels: {
-                title: "GitHub Streak",
-                current_streak: "Current Streak",
-                longest_streak: "Longest Streak",
-                total_contributions: "Total Contributions",
+            labels: {
+                title: "GitHub Streak Stats",
+                current_streak: "Current",
+                longest_streak: "Longest",
+                total_contributions: "Total",
             },
-            */
-        });
+        }); 
+        expect(res.getHeader('Cache-Control')).toBe('public, max-age=43200, s-maxage=43200, stale-while-revalidate=3600');  
+        expect(res.getHeader('Content-Type')).toBe('application/json');
+        
+
+        
     });
 });
