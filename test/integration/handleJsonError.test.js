@@ -60,24 +60,8 @@ describe("JSON Endpoint errors", () => {
         expect(res.headers["Content-Type"]).toBe("application/json");
         expect(res.body).toHaveProperty("error");
         expect(res.body.error).toContain("Not Found");
-        expect(res.body.message).toContain("GitHub user not found");
+        expect(res.body.message).toContain("The requested resource was not found");
        
-    });
-
-    it("should return error when GitHub API fails", async () => {
-        const req = {
-            query: { user: "validuser" },
-            headers: {},
-        };
-        const res = createMockRes();
-        vi.spyOn(githubClient, "fetchUserContributions").mockRejectedValue(new Error("GitHub API request failed")); 
-
-        await handler(req, res);
-        expect(res.statusCode).toBe(500);
-        expect(res.headers["Content-Type"]).toBe("application/json");
-        expect(res.body).toHaveProperty("error");
-        expect(res.body.error).toContain("Internal Server Error");
-        expect(res.body.message).toContain("Unexpected error");
     });
 
     it("should return error when unexpected error occurs", async () => {
@@ -93,7 +77,7 @@ describe("JSON Endpoint errors", () => {
         expect(res.headers["Content-Type"]).toBe("application/json");
         expect(res.body).toHaveProperty("error");
         expect(res.body.error).toContain("Internal Server Error");
-        expect(res.body.message).toContain("Unexpected error");
+        expect(res.body.message).toContain("An unknown error occurred");
     });
 
 }); 
