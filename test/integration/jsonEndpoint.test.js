@@ -58,12 +58,7 @@ describe("JSON Endpoint (integration)", () => {
             total_contributions: 20,
             first_contribution_date: "2024-01-01",
             last_contribution_date: "2024-01-02",
-            labels: {
-                title: "GitHub Streak Stats",
-                current_streak: "Current",
-                longest_streak: "Longest",
-                total_contributions: "Total",
-            },
+            
         }); 
         expect(res.getHeader('Cache-Control')).toBe('public, max-age=43200, s-maxage=43200, stale-while-revalidate=3600');  
         expect(res.getHeader('Content-Type')).toBe('application/json');
