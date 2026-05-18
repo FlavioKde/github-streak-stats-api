@@ -15,6 +15,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+## [1.1.0] - 2026-05-18
+
+### Added
+- Architecture i18n language translation module
+- Default and fallback language set to English
+- Unit and integration test for SVG/JSON
+- Pure Json endpoint (Api-only)
+- Clear separation of SVG and JSON responsibilities
+- Reviewed responsibilities, architecture boundaries, and consumer interactions
+
 ## [1.0.0] - 2026-04-10
 
 ### Added
@@ -36,7 +46,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## Version Links
 
-[Unreleased]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/FlavioKde/github-streak-stats-api/releases/tag/v1.0.0
 
 
