@@ -329,6 +329,8 @@ Focus on module interaction
 
 - `handleSvgError`(handle svg errors and translates error messages)
 - `svgEndpoint`(full request → SVG response)
+- `JsonEndpoint`(full request → JSON response)
+- `handleJsonError`(handle json errors and translates error messages)
 
 ### Mocking strategy
 
@@ -414,7 +416,9 @@ test/
     resolveLang.test.js
   integration
     handleSvgError.test.js
-    svgEndpoint.test,js    
+    svgEndpoint.test.js
+    jsonEndpoint.test.js
+    handleJsonError.test.js    
 
 ```
 
