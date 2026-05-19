@@ -542,7 +542,9 @@ Planned improvements
 - Retry logic for GitHub API
 - Better handling of rate limits (per user)
 
-### Phase 7 — [ ] Developer Experience & Extensibility
+## Feature ecosystem ideas
+
+###  — [ ] Developer Experience & Extensibility
 
 Make the project easy to extend and contribute to.
 
