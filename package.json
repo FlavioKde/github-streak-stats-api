@@ -14,7 +14,8 @@
     "clean": "rm -rf node_modules package-lock.json",
     "test": "vitest",
     "test:run": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:ci": "vitest run --reporter=dot"
     },
     "dependencies": {
     "node-fetch": "^3.3.2"
