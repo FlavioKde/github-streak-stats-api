@@ -424,6 +424,43 @@ test/
 
 This mirrors the architecture and makes it easy to locate tests for any module.
 
+# Runtime Architecture 
+
+# Development workflow
+
+## CI
+
+- Automated tests in push/PR
+
+All pushes and pull requests trigger the CI pipeline.
+The workflow runs unit tests, integration tests and linting.
+PRs cannot be merged unless the pipeline passes.
+This ensures code quality and prevents regressions before reaching main.
+
+## Dependabot
+
+- Weekly npm updates
+
+Dependabot checks for npm dependency updates every week.
+Security updates are prioritized.
+All update PRs require manual review to avoid breaking changes.
+This keeps the project secure and aligned with upstream packages.
+
+## Releases
+
+- Manual semantic versioning
+
+Releases follow semantic versioning (MAJOR.MINOR.PATCH).
+Versions are created manually to ensure intentional, human‑verified changes.
+Each release includes a changelog entry and updated documentation.
+Production deployments are tied to tagged releases only.
+
+## Planned automation improvements
+
+- **CodeQL**: static analysis for security vulnerabilities.
+- **PR templates**: enforce consistent and descriptive pull requests.
+- **Issue templates**: standardize bug reports and feature requests.
+
 # Roadmap
 
 This project is designed to be self‑hosted by each user through a one‑click Vercel deployment.
