@@ -424,8 +424,6 @@ test/
 
 This mirrors the architecture and makes it easy to locate tests for any module.
 
-# Runtime Architecture 
-
 # Development workflow
 
 ## CI
@@ -453,13 +451,24 @@ This keeps the project secure and aligned with upstream packages.
 Releases follow semantic versioning (MAJOR.MINOR.PATCH).
 Versions are created manually to ensure intentional, human‑verified changes.
 Each release includes a changelog entry and updated documentation.
-Production deployments are tied to tagged releases only.
 
-## Planned automation improvements
+## CodeQL
 
-- **CodeQL**: static analysis for security vulnerabilities.
-- **PR templates**: enforce consistent and descriptive pull requests.
-- **Issue templates**: standardize bug reports and feature requests.
+- Static analysis for security vulnerabilities.
+
+CodeQL identifies vulnerabilities and errors in the code. The results are displayed as code scan alerts on GitHub.
+
+## Pull request template
+
+- Enforce consistent and descriptive pull requests.
+
+Pull request template change discipline
+
+## Issue template
+
+- standardize bug reports and feature requests.
+
+Issue template communication/reporting discipline.
 
 # Roadmap
 
