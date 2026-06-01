@@ -16,7 +16,19 @@ jobs:
         id: extract_release_notes
         run: |
           TAG="${{ github.ref_name }}"
-          awk "/## \[${TAG}\]/,/## \[/" CHANGELOG.md > release_notes.md
+          VERSION="${TAG#v}"
+          awk "
+          /^## \[${VERSION}\\]
+
+          / { capture=1; next }
+          /^## \
+
+          \[/ && capture { exit }
+          capture
+          " CHANGELOG.md > release_notes.md
+
+      - name: Debug extracted notes
+        run: cat release_notes.md    
 
       - name: Create GitHub Release  
         uses: softprops/action-gh-release@v1
