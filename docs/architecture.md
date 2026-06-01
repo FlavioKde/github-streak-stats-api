@@ -470,6 +470,15 @@ Pull request template change discipline
 
 Issue template communication/reporting discipline.
 
+## Release automation
+
+- automation from CHANGELOG
+
+Automated GitHub Releases generated from CHANGELOG.md based on semantic version tags (v*.*.*)
+Each release extracts the corresponding version section from the changelog instead of relying on commit history
+Tag version (vX.Y.Z) is normalized to match changelog format (X.Y.Z)
+The extracted section is used as the GitHub Release body
+
 # Roadmap
 
 This project is designed to be self‑hosted by each user through a one‑click Vercel deployment.
