@@ -15,6 +15,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+## [1.2.1] - 2026-06-01
+
+## Added
+- Automated GitHub Release creation from semantic version tags
+- CHANGELOG-driven release notes generation
+
+## Changed
+- Documented release automation workflow in architecture.md
+
 ## [1.2.0] - 2026-05-26
 
 ### Added
@@ -56,7 +65,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## Version Links
 
-[Unreleased]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/FlavioKde/github-streak-stats-api/releases/tag/v1.1.0 
 [1.0.0]: https://github.com/FlavioKde/github-streak-stats-api/releases/tag/v1.0.0
