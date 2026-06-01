@@ -17,15 +17,12 @@ jobs:
         run: |
           TAG="${{ github.ref_name }}"
           VERSION="${TAG#v}"
-          awk "
-          /^## \[${VERSION}\\]
 
-          / { capture=1; next }
-          /^## \
-
-          \[/ && capture { exit }
+          awk -v version="$VERSION" '
+          $0 ~ "^## \\[" version "\\]" { capture=1; next }
+          $0 ~ "^## \\[" && capture { exit }
           capture
-          " CHANGELOG.md > release_notes.md
+          ' CHANGELOG.md > release_notes.md
 
       - name: Debug extracted notes
         run: cat release_notes.md    
