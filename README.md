@@ -8,6 +8,7 @@
 
 ![License](https://img.shields.io/github/license/FlavioKde/github-streak-stats-api)
 
+
 > 🚀 Self-hosted GitHub streak stats with zero shared limits and full control.
 
 A modern, self‑hosted, serverless GitHub streak stats API.
