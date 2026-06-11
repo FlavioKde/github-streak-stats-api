@@ -1,12 +1,12 @@
 # 🔥GitHub Streak Stats Api - Vercel Self-Hosted
 
-<p align = "left"> ![CI](https://github.com/FlavioKde/github-streak-stats-api/actions/workflows/ci.yml/badge.svg)
+<p align= "left"> <img ![CI](https://github.com/FlavioKde/github-streak-stats-api/actions/workflows/ci.yml/badge.svg)/>
 
-![CodeQL](https://github.com/FlavioKde/github-streak-stats-api/actions/workflows/codeql.yml/badge.svg)
+<img ![CodeQL](https://github.com/FlavioKde/github-streak-stats-api/actions/workflows/codeql.yml/badge.svg)/>
 
-![GitHub release](https://img.shields.io/github/v/release/FlavioKde/github-streak-stats-api)
+<img ![GitHub release](https://img.shields.io/github/v/release/FlavioKde/github-streak-stats-api)/>
 
-![License](https://img.shields.io/github/license/FlavioKde/github-streak-stats-api)
+<img ![License](https://img.shields.io/github/license/FlavioKde/github-streak-stats-api)/>
 </p>
 
 
