@@ -1,12 +1,13 @@
 # 🔥GitHub Streak Stats Api - Vercel Self-Hosted
 
-![CI](https://github.com/FlavioKde/github-streak-stats-api/actions/workflows/ci.yml/badge.svg)
+<p align = "left"> ![CI](https://github.com/FlavioKde/github-streak-stats-api/actions/workflows/ci.yml/badge.svg)
 
 ![CodeQL](https://github.com/FlavioKde/github-streak-stats-api/actions/workflows/codeql.yml/badge.svg)
 
 ![GitHub release](https://img.shields.io/github/v/release/FlavioKde/github-streak-stats-api)
 
 ![License](https://img.shields.io/github/license/FlavioKde/github-streak-stats-api)
+</p>
 
 
 > 🚀 Self-hosted GitHub streak stats with zero shared limits and full control.
@@ -124,7 +125,7 @@ Deployment guide:
 
 📘 docs/vercel-guide.md
 
-## ⚡ Quick Example
+## ⚡ Usage Example
 
 Use it in your README:
 
@@ -239,15 +240,15 @@ Consult [CHANGELOG.md](CHANGELOG.md) to see all the modifications specific to th
 
 - **[CHANGELOG.md](CHANGELOG.md)** - Change history of this project
 - **[Upstream documentation](docs/)** - Features and use of the base project 
-- **[Vercel deployment guide](docs/vercel-guide.md)** -(docs/vercel-guide.md)
-- **[Architecture](docs/architecture.md)** -(docs/architecture.md)
+- **[Vercel deployment guide](docs/vercel-guide.md)** - Vercel project guide
+- **[Architecture](docs/architecture.md)** - Project architecture
 
 
 ## 🛣️ Roadmap
 
 This project is actively evolving. 
 
-## Progress
+## Project status
 
 - [x] Completed
 - [ ] Planned
