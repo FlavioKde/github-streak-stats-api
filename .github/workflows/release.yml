@@ -42,10 +42,7 @@ jobs:
           VERSION="${{ github.ref_name }}"
           VERSION="${VERSION#v}"
 
-          echo "# 🚀 GitHub Streak Stats API ${VERSION}" > release_body.md
-          echo "" >> release_body.md
-
-          echo "## 📦 Release notes" >> release_body.md
+          echo "## 📦 Release notes" > release_body.md
           cat release_notes.md >> release_body.md
 
           echo "" >> release_body.md
@@ -56,7 +53,7 @@ jobs:
           echo "- 📦 Repository: https://github.com/${{ github.repository }}" >> release_body.md
           echo "- 🧾 Changelog: https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md" >> release_body.md
           echo "- 🚀 API: https://github-streak-stats-api.vercel.app/api/streak/svg" >> release_body.md
-          
+
       - name: Create GitHub Release  
         uses: softprops/action-gh-release@v1
         with:
