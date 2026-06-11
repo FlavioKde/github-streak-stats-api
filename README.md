@@ -1,14 +1,11 @@
 # 🔥GitHub Streak Stats Api - Vercel Self-Hosted
 
-<p align= "left"> <img ![CI](https://github.com/FlavioKde/github-streak-stats-api/actions/workflows/ci.yml/badge.svg)/>
-
-<img ![CodeQL](https://github.com/FlavioKde/github-streak-stats-api/actions/workflows/codeql.yml/badge.svg)/>
-
-<img ![GitHub release](https://img.shields.io/github/v/release/FlavioKde/github-streak-stats-api)/>
-
-<img ![License](https://img.shields.io/github/license/FlavioKde/github-streak-stats-api)/>
+<p align="left">
+  <img src="https://github.com/FlavioKde/github-streak-stats-api/actions/workflows/ci.yml/badge.svg" />
+  <img src="https://github.com/FlavioKde/github-streak-stats-api/actions/workflows/codeql.yml/badge.svg" />
+  <img src="https://img.shields.io/github/v/release/FlavioKde/github-streak-stats-api" />
+  <img src="https://img.shields.io/github/license/FlavioKde/github-streak-stats-api" />
 </p>
-
 
 > 🚀 Self-hosted GitHub streak stats with zero shared limits and full control.
 
