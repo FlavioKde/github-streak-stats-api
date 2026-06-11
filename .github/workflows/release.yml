@@ -26,15 +26,43 @@ jobs:
           capture
           ' CHANGELOG.md > release_notes.md
 
+      - name: Validate extracted notes
+        run: |
+          if [ ! -s release_notes.md ]; then
+            echo "Error: No release notes found for version ${{ github.ref_name }}"
+            exit 1
+          fi    
+
       - name: Debug extracted notes
         run: cat release_notes.md    
 
+      - name: Build enriched release body
+        id: build_release_body
+        run: |
+          VERSION="${{ github.ref_name }}"
+          VERSION="${VERSION#v}"
+
+          echo "# 🚀 GitHub Streak Stats API ${VERSION}" > release_body.md
+          echo "" >> release_body.md
+
+          echo "## 📦 Release notes" >> release_body.md
+          cat release_notes.md >> release_body.md
+
+          echo "" >> release_body.md
+          echo "---" >> release_body.md
+          echo "" >> release_body.md
+
+          echo "## 🔗 Links" >> release_body.md
+          echo "- 📦 Repository: https://github.com/${{ github.repository }}" >> release_body.md
+          echo "- 🧾 Changelog: https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md" >> release_body.md
+          echo "- 🚀 API: https://github-streak-stats-api.vercel.app/api/streak/svg" >> release_body.md
+          
       - name: Create GitHub Release  
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
-          body_path: release_notes.md
+          body_path: release_body.md
 
         
       
