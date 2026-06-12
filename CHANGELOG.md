@@ -15,6 +15,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+## [1.2.2] - 2026-06-12
+
+### Added
+- GitHub UI polish (badges alignment, topics configuration)
+- Final README improvements
+
+### Fixed
+- Badge rendering alignment issues in README
+
 ## [1.2.1] - 2026-06-01
 
 ## Added
@@ -65,7 +74,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## Version Links
 
-[Unreleased]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.2.1...HEAD
+[Unreleased]:https://github.com/FlavioKde/github-streak-stats-api/compare/v1.2.2...HEAD 
+[1.2.2]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.2.1...1.2.2
 [1.2.1]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/FlavioKde/github-streak-stats-api/releases/tag/v1.1.0 
