@@ -93,7 +93,7 @@ No shared limits. No external dependencies.
 
 Your API will be available at:
 
-https://your-project.vercel.app/api/streak/svg?user=YOUR_USERNAME
+`https://your-project.vercel.app/api/streak/svg?user=YOUR_USERNAME`
 
 ## ✨ Features added in this project
 
