@@ -3,7 +3,7 @@ import { ValidationError } from '../../lib/shared/errors/index.js';
 import { formatJsonResponse } from '../../lib/render/formatJsonResponse.js';
 import { handleJsonError } from '../../lib/http/handleJsonError.js';
 import { getCachedLanguages, setCachedLanguages } from '../../lib/cache/languagesCache.js';
-import { calculateLanguagesPorcentages } from '../../lib/languages/calculateLanguagesPorcentages.js';
+import { calculateLanguagePorcentages } from '../../lib/languages/calculateLanguagePorcentages.js';
 
 export default async function handler(req, res) {
   try {
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     if (!languagesStats) {
 
         const languagesData = await fetchUserLanguages(user);
-        languagesStats = calculateLanguagesPorcentages(languagesData);
+        languagesStats = calculateLanguagePorcentages(languagesData);
 
         setCachedLanguages(user, languagesStats);
     }
