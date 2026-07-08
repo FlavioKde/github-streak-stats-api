@@ -1,6 +1,6 @@
 import { fetchUserLanguages } from '../../lib/github/githubClient.js';
 import { ValidationError } from '../../lib/shared/errors/index.js';
-import { formatJsonResponse } from '../../lib/render/formatJsonResponse.js';
+import { formatLanguagesJsonResponse } from '../../lib/render/formatLanguagesJsonResponse.js';
 import { handleJsonError } from '../../lib/http/handleJsonError.js';
 import { getCachedLanguages, setCachedLanguages } from '../../lib/cache/languagesCache.js';
 import { buildLanguagesStats } from '../../lib/languages/buildLanguagesStats.js';
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
         setCachedLanguages(user, languagesStats);
     }
 
-    const formattedResponse = formatJsonResponse(languagesStats);
+    const formattedResponse = formatLanguagesJsonResponse(languagesStats);
       
       res.setHeader('Cache-Control', 'public, max-age=43200, s-maxage=43200, stale-while-revalidate=3600');
       
