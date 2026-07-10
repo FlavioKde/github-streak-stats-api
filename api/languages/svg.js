@@ -1,4 +1,4 @@
-import { fetchUserLanguages } from "../../lib/github/githubClient";
+import { fetchUserLanguages } from "../../lib/github/githubClient.js";
 import { ValidationError } from "../../lib/shared/errors/ValidationError.js";
 import { renderLanguagesSvg } from "../../lib/render/renderLanguagesSvg.js";
 import { sendSvgResponse } from "../../lib/render/sendSvgResponse.js";
