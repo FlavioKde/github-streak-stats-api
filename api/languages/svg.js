@@ -4,6 +4,7 @@ import { renderLanguagesSvg } from "../../lib/render/renderLanguagesSvg.js";
 import { sendSvgResponse } from "../../lib/render/sendSvgResponse.js";
 import { handleSvgError } from "../../lib/http/handleSvgError.js";
 import { getCachedLanguages } from "../../lib/cache/languagesCache.js";
+import { buildLanguagesStats } from "../../lib/languages/buildLanguagesStats.js";
 import { getTheme } from "../../lib/themes/themes.js";
 import { createTranslator } from "../../lib/i18n/index.js";
 
@@ -22,9 +23,11 @@ export default async function handler(req, res) {
 
         const selectedTheme = getTheme(theme) || getTheme("dark");
 
-        const languagesData = await getCachedLanguages(fetchUserLanguages, user);   
+        const languagesData = await getCachedLanguages(fetchUserLanguages, user);  
+        
+        const languagesStats = buildLanguagesStats(languagesData);
 
-        const svg = renderLanguagesSvg(languagesData, selectedTheme, t);
+        const svg = renderLanguagesSvg(languagesStats, selectedTheme, t);
 
         sendSvgResponse({
             res,
