@@ -30,7 +30,7 @@ describe('renderLanguagesSvg', () => {
     const svg = renderLanguagesSvg(data, theme, t);
 
     expect(svg).toContain(`${totalLanguages}`);
-    expect(svg).toContain(`${totalBytes}`);
+    expect(svg).toContain(`${totalBytes.toLocaleString()}`);
     languages.forEach(language => {
         expect(svg).toContain(`${language.name}`);
         expect(svg).toContain(`${language.percentage}`);
