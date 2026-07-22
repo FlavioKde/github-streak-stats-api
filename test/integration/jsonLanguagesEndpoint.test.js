@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { GithubApiError } from '../../lib/shared/errors/githubApiError.js';
+import { GithubApiError } from '../../lib/shared/errors/GithubApiError.js';
 
 vi.mock('../../lib/github/githubClient.js', () => ({
   fetchUserLanguages: vi.fn()
@@ -147,10 +147,9 @@ describe('JSON Languages Endpoint(integration)', () => {
         await handler(req, res);
 
         expect(res.statusCode).toBe(500);
-        expect(res.body).toEqual({ error: "Internal Server Error", message: "An unknown error occurred" });
+        expect(res.body).toEqual({ error: "GitHub API Error", message: "Error occurred while fetching GitHub API data" });
         expect(res.getHeader('Content-Type')).toBe('application/json');
     });
-
 
 
 });
