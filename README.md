@@ -7,14 +7,13 @@
   <img src="https://img.shields.io/github/license/FlavioKde/github-streak-stats-api" />
 </p>
 
-> 🚀 Self-hosted GitHub statics API with zero shared limits and full control.
+> 🚀 Self-hosted GitHub modular statistics API with zero shared limits, full control and one-click deployment.
 
-A modern, self‑hosted, serverless GitHub statics API.
+A modern, self‑hosted, serverless GitHub modular statistics API.
 
 **Inspired by [GitHub Readme Streak Stats](https://github.com/denvercoder1/github-readme-streak-stats).**
 
-
-This project was created to solve a real-world problem:
+This project began as a fork of GitHub Readme Streak Stats, created to solve a real-world problem:
 
 concurrency issues, rate limits, and unreliable data when using shared public endpoints.
 
@@ -26,6 +25,23 @@ The original project is excellent, but even when deploying it to Vercel or Herok
 - 	no true self‑hosting
 
 This project solves those issues completely.
+
+The original limitations led to a complete architectural redesign, resulting in a modular system where each statistic is implemented as an independent, self-contained module.
+
+### 🔄 Evolution of the project
+What started as a streak‑stats fix has grown into a modular GitHub statistics platform.
+
+Today, the project supports multiple independent modules:
+
+🔥 Streak Stats
+
+💻 Languages Stats
+
+And the architecture is designed to support many more.
+
+Each module has its own domain logic, renderer, JSON formatter, translations, and endpoints — all sharing a common infrastructure.
+
+This is now a complete GitHub Stats API, deployable with one click, extensible, and built for long‑term growth.
 
 ## Why this project exists
 
@@ -47,11 +63,11 @@ So I rebuilt the project with:
 - 	a robust caching system
 - 	predictable error handling
 - 	and one‑click deployment for anyone
--   separate modules for GitHub stats API
+-   separate modules for GitHub statistics API
 
 Now every user gets their own private instance, with their own GitHub rate limits and zero interference from others.
 
-## 🧩 API Modules
+## 🧩 API Modules (Modular GitHub Statistics)
 
 This project is not just a streak stats API — it is a modular GitHub statistics platform.
 
@@ -120,6 +136,7 @@ Example response:
   
 }
 ```
+
 ---
 
 ### 💻 Languages Stats
@@ -174,7 +191,7 @@ Example response:
   ]
 }
 ```
-
+You can deploy all modules at once with one click using Vercel.
 ---
 
 ### 🚧 Future modules
@@ -190,6 +207,24 @@ Possible future modules include:
 * Repository statistics
 
 Each module can expose its own JSON and/or SVG endpoint while reusing the project's shared infrastructure for GitHub communication, caching, rendering, themes, internationalization, and error handling.
+
+### 🧠 Build your own renderer
+
+Every module exposes a JSON endpoint:
+
+```bash
+
+/api/<module>/stats?user=YOUR_USERNAME
+
+```
+This allows you to:
+
+- build your own SVG
+- generate PNGs
+- create dashboards
+- integrate the data into your own applications
+
+The API is designed to be flexible and reusable.
 
 ## Tech Stack
 
