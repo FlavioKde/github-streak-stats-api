@@ -7,14 +7,13 @@
   <img src="https://img.shields.io/github/license/FlavioKde/github-streak-stats-api" />
 </p>
 
-> 🚀 Self-hosted GitHub streak stats with zero shared limits and full control.
+> 🚀 Self-hosted GitHub modular statistics API with zero shared limits, full control and one-click deployment.
 
-A modern, self‑hosted, serverless GitHub streak stats API.
+A modern, self‑hosted, serverless GitHub modular statistics API.
 
 **Inspired by [GitHub Readme Streak Stats](https://github.com/denvercoder1/github-readme-streak-stats).**
 
-
-This project was created to solve a real-world problem:
+This project began as a fork of GitHub Readme Streak Stats, created to solve a real-world problem:
 
 concurrency issues, rate limits, and unreliable data when using shared public endpoints.
 
@@ -26,6 +25,23 @@ The original project is excellent, but even when deploying it to Vercel or Herok
 - 	no true self‑hosting
 
 This project solves those issues completely.
+
+The original limitations led to a complete architectural redesign, resulting in a modular system where each statistic is implemented as an independent, self-contained module.
+
+### 🔄 Evolution of the project
+What started as a streak‑stats fix has grown into a modular GitHub statistics platform.
+
+Today, the project supports multiple independent modules:
+
+🔥 Streak Stats
+
+💻 Languages Stats
+
+And the architecture is designed to support many more.
+
+Each module has its own domain logic, renderer, JSON formatter, translations, and endpoints — all sharing a common infrastructure.
+
+This is now a complete GitHub Stats API, deployable with one click, extensible, and built for long‑term growth.
 
 ## Why this project exists
 
@@ -47,8 +63,168 @@ So I rebuilt the project with:
 - 	a robust caching system
 - 	predictable error handling
 - 	and one‑click deployment for anyone
+-   separate modules for GitHub statistics API
 
 Now every user gets their own private instance, with their own GitHub rate limits and zero interference from others.
+
+## 🧩 API Modules (Modular GitHub Statistics)
+
+This project is not just a streak stats API — it is a modular GitHub statistics platform.
+
+Each statistic is implemented as an independent module with:
+
+- its own domain logic
+- its own JSON formatter
+- its own SVG renderer
+- its own i18n translations
+- its own serverless endpoints
+- its own test suite
+
+All modules share a common infrastructure:
+
+- GitHub GraphQL client
+- caching system
+- theme system
+- error handling
+- validators
+
+This makes the project:
+
+- easy to extend
+- easy to maintain
+- easy to deploy
+- easy to customize
+
+### 🔥 Streak Stats
+
+Provides GitHub contribution streak statistics, including:
+
+* Current streak
+* Longest streak
+* Total contributions
+* Year contribution blocks
+* Multiple themes
+* Internationalized labels and error messages
+
+**SVG**
+
+```text
+/api/streak/svg?user=YOUR_USERNAME
+```
+
+Example:
+
+```text
+https://your-project.vercel.app/api/streak/svg?user=FlavioKde&theme=one_dark_pro
+```
+
+**JSON**
+
+```text
+/api/streak/stats?user=YOUR_USERNAME
+```
+
+Example response:
+
+```json
+{
+  "current_streak": { length: 5 },
+  "longest_streak": { length: 10 },
+  "total_contributions": 20,
+  "first_contribution_date": "2024-01-01",
+  "last_contribution_date": "2024-01-02",
+  
+}
+```
+
+---
+
+### 💻 Languages Stats
+
+Provides statistics about the programming languages used across a user's public repositories.
+
+The module calculates:
+
+* Total languages
+* Total bytes
+* Language size
+* Language percentage
+* Language colors
+
+**SVG**
+
+```text
+/api/languages/svg?user=YOUR_USERNAME
+```
+
+Example:
+
+```text
+https://your-project.vercel.app/api/languages/svg?user=FlavioKde
+```
+
+**JSON**
+
+```text
+/api/languages/stats?user=YOUR_USERNAME
+```
+
+Example response:
+
+```json
+{
+  "totalLanguages": 4,
+  "totalBytes": 500,
+  "languages": [
+    {
+      "name": "Python",
+      "color": "#3572A5",
+      "size": 200,
+      "percentage": 40
+    },
+    {
+      "name": "Java",
+      "color": "#b07219",
+      "size": 150,
+      "percentage": 30
+    }
+  ]
+}
+```
+You can deploy all modules at once with one click using Vercel.
+---
+
+### 🚧 Future modules
+
+The architecture is designed to make additional GitHub statistics easy to add without coupling them to existing modules.
+
+Possible future modules include:
+
+* Pull Requests
+* Issues
+* Activity
+* Contribution heatmaps
+* Repository statistics
+
+Each module can expose its own JSON and/or SVG endpoint while reusing the project's shared infrastructure for GitHub communication, caching, rendering, themes, internationalization, and error handling.
+
+### 🧠 Build your own renderer
+
+Every module exposes a JSON endpoint:
+
+```bash
+
+/api/<module>/stats?user=YOUR_USERNAME
+
+```
+This allows you to:
+
+- build your own SVG
+- generate PNGs
+- create dashboards
+- integrate the data into your own applications
+
+The API is designed to be flexible and reusable.
 
 ## Tech Stack
 
@@ -76,9 +252,14 @@ See:
 
 ## 🚀 Deploy your own instance (recommended)
 
-Each user runs their own private API on Vercel.
+Each user runs their own private GitHub statistics API on Vercel.
 
-No shared limits. No external dependencies.
+The deployment includes all available API modules, including:
+
+* 🔥 Streak Stats
+* 💻 Languages Stats
+
+No shared limits. No external API server. Your Vercel instance runs the complete API.
 
 ### One-click deploy
 
@@ -86,14 +267,28 @@ No shared limits. No external dependencies.
 
 ### Steps
 
-1. Click the deploy button  
-2. Connect your GitHub account  
-3. Add your `GITHUB_TOKEN` (required)  
-4. Deploy  
+1. Click the deploy button
+2. Connect your GitHub account
+3. Add your `GITHUB_TOKEN`
+4. Deploy
 
-Your API will be available at:
+After deployment, all API modules are available from your Vercel instance.
 
-`https://your-project.vercel.app/api/streak/svg?user=YOUR_USERNAME`
+For example:
+
+**Streak Stats**
+
+```text
+https://your-project.vercel.app/api/streak/svg?user=YOUR_USERNAME
+```
+
+**Languages Stats**
+
+```text
+https://your-project.vercel.app/api/languages/svg?user=YOUR_USERNAME
+```
+
+The same deployment provides both endpoints.
 
 ## ✨ Features added in this project
 
@@ -104,11 +299,12 @@ Your API will be available at:
 
 ## 🧠 How it works
 
-This project uses a clean, modular architecture:
+This project uses a clean, modular architecture. Each GitHub statistic is implemented as an independent module with its own domain logic, renderer, JSON formatter and translations.
 
 - /api → serverless endpoints
 - /lib/github → GitHub API integration
 - /lib/streak → pure streak calculation logic
+- /lib/languages → pure languages calculation logic
 - /lib/render → SVG + JSON rendering
 - /lib/cache → caching system
 - /lib/http → error handling
@@ -122,11 +318,15 @@ Deployment guide:
 
 📘 docs/vercel-guide.md
 
-## ⚡ Usage Example
+## ⚡ Usage Examples
 
 Use it in your README:
 
 ![GitHub Streak](https://github-streak-stats-api.vercel.app/api/streak/svg?user=FlavioKde&theme=one_dark_pro)
+
+or
+
+![GitHub Languages](https://github-streak-stats-api.vercel.app/api/languages/svg?user=FlavioKde&theme=dark)
 
 
 API endpoint:
@@ -140,6 +340,12 @@ Use any theme like this:
 ```bash
 
 /api/streak/svg?user=FlavioKde&theme=dark
+
+```
+
+```bash
+
+/api/languages/svg?user=FlavioKde&theme=light
 
 ```
 
@@ -206,7 +412,7 @@ Use the `lang` query parameter:
 
 ```txt
 /api/streak/svg?user=octocat&lang=en
-/api/streak/svg?user=octocat&lang=es
+/api/languages/svg?user=octocat&lang=es
 
 ```
 
@@ -260,11 +466,15 @@ Planned features include:
 - [x] Unit tests
 - [x] Integration tests
 - [x] Internationalization (i18n)
+- [x] GitHub language statistics
 
 ### In progress / planned
 
 - [ ] Customizable error rendering
-- [ ] Extended GitHub statistics (PRs, issues, languages, activity heatmaps)
+- [ ] Pull Request statistics
+- [ ] Issue statistics
+- [ ] Activity statistics
+- [ ] Contribution heatmaps
 - [ ] Optional visit tracking
 - [ ] Theme System 2.0
 - [ ] Plugin system
