@@ -49,6 +49,7 @@ graph TD
             L1["aggregateLanguages.js"]
             L2["buildLanguagesStats.js"]
             L3["calculateLanguagePercentages.js"]
+        end        
 
         subgraph Streak Domain ["streak/"]
             S1["calculateStreak.js"]
@@ -344,7 +345,7 @@ At a high level, the system processes a request in the following stages:
 flowchart TD
 
     %% Entrada
-    A["HTTP Request<br/>/api/<module>/stats or /api/<module>/svg"] --> B["API Layer<br/>Validate input"]
+    A["HTTP Request<br/>/api/module/stats or /svg"] --> B["API Layer<br/>Validate input"]
 
     %% Validación
     B -->|Valid| C["Application Layer<br/>Orchestrate request"]
