@@ -324,7 +324,6 @@ Use it in your README:
 
 ![GitHub Streak](https://github-streak-stats-api.vercel.app/api/streak/svg?user=FlavioKde&theme=one_dark_pro)
 
-or
 
 ![GitHub Languages](https://github-streak-stats-api.vercel.app/api/languages/svg?user=FlavioKde&theme=dark)
 
