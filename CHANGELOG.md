@@ -8,10 +8,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+
 ### Changed 
 
 ### Fixed
+
+### Removed
+
+## [1.3.0] - 2026-08-09
+
+### Added
+- GitHub Languages Stats module
+- Languages SVG endpoint
+- Languages JSON endpoint
+- Language statistics calculation including total languages, total bytes,language size, percentage, and language colors
+- Dedicated languages caching system
+- Unit and integration tests for Languages Stats
+- Error handling and SVG error rendering for Languages endpoints
+- Languages module documentation and API examples
+- Modular architecture support for additional GitHub statistics
+
+### Changed
+- Expanded the project from a GitHub Streak Stats API into a modular GitHub Statistics API
+- Updated README with Languages Stats documentation and usage examples
+- Updated architecture documentation to include the Languages module
+- Updated deployment documentation to describe the complete API deployment
+- Improved separation between GitHub statistics modules and shared infrastructure
+
+### Fixed
 - Documentation clarified regarding GitHub token requirement
+- Improved error handling and test coverage for SVG endpoints
 
 ### Removed
 
@@ -26,11 +52,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [1.2.1] - 2026-06-01
 
-## Added
+### Added
 - Automated GitHub Release creation from semantic version tags
 - CHANGELOG-driven release notes generation
 
-## Changed
+### Changed
 - Documented release automation workflow in architecture.md
 
 ## [1.2.0] - 2026-05-26
@@ -74,7 +100,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## Version Links
 
-[Unreleased]:https://github.com/FlavioKde/github-streak-stats-api/compare/v1.2.2...HEAD 
+[Unreleased]:https://github.com/FlavioKde/github-streak-stats-api/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.2.2...1.3.0
 [1.2.2]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.2.1...1.2.2
 [1.2.1]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/FlavioKde/github-streak-stats-api/compare/v1.1.0...v1.2.0
