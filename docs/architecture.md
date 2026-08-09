@@ -2,7 +2,7 @@
 
 This document describes the architecture of the: 
 
-**[GitHub Readme Streak Stats](https://github.com/FlavioKde/github-streak-stats-api) optimized for Vercel deployment**
+**[Architecture of the Modular GitHub Statistics API (Streak, Languages, and future modules)](https://github.com/FlavioKde/github-streak-stats-api) optimized for Vercel deployment**
 
 Its goals are:
 
@@ -32,6 +32,8 @@ graph TD
     subgraph API Layer ["/api/"]
         A1["streak/stats.js"]
         A2["streak/svg.js"]
+        A3["languages/stats.js"]
+        A4["languages/svg.js"]
     end
 
     subgraph Core Logic ["/lib/"]
@@ -43,6 +45,11 @@ graph TD
             G4["githubResponse.js"]
         end
 
+        subgraph Languages Domain ["languages/"]
+            L1["aggregateLanguages.js"]
+            L2["buildLanguagesStats.js"]
+            L3["calculateLanguagePercentages.js"]
+
         subgraph Streak Domain ["streak/"]
             S1["calculateStreak.js"]
             S2["buildYearBlocks.js"]
@@ -51,8 +58,10 @@ graph TD
         subgraph Rendering ["render/"]
             R1["renderStreakSvg.js"]
             R2["errorSvg.js"]
-            R3["formatJsonResponse.js"]
+            R3["formatStreakJsonResponse.js"]
             R4["sendSvgResponse.js"]
+            R5["formatLanguagesJsonResponse.js"]
+            R6["renderLanguagesSvg.js"]
         end
 
         subgraph Translator ["i18n/"]
@@ -67,6 +76,7 @@ graph TD
 
         subgraph Cache Layer ["cache/"]
             C1["contributionsCache.js"]
+            C2["languagesCache.js"]
         end
 
         subgraph Shared Utilities ["shared/"]
@@ -85,8 +95,13 @@ graph TD
         D2["vercel-guide.md"]
     end
 
-    subgraph Tests ["/test_js/"]
-        TST1["streak/*.test.js"]
+    subgraph Tests ["/test/"]
+        TST1["i18n/*.test.js"]
+        TST2["integration/*.test.js"]
+        TST3["languages/*.test.js"]
+        TST4["render/*.test.js"]
+        TST5["shared/*.test.js"]
+        TST6["streak/*.test.js"]
     end
 
 
@@ -109,8 +124,11 @@ Each layer of the project has a single, well‑defined responsibility:
 Handles HTTP input/output only.
 No business logic, no GitHub calls, no rendering.
 
-- Domain Layer `/lib/streak`
-Contains pure streak‑calculation logic.
+- Domain Layer `/lib/<module>`
+Contains pure calculation logic for each module.
+Example:
+- `/lib/streak`
+- `/lib/languages`
 Free of side effects and external dependencies.
 
 - Infrastructure Layer `/lib/github`, `/lib/cache`
@@ -148,6 +166,68 @@ This allows:
 - portability to other platforms,
 - and long‑term maintainability.
 
+### Module Anatomy
+
+Each module of the project follows the same structure
+
+```bash
+
+/lib/<module>/
+    domain.js
+    renderSvg.js
+    formatJson.js
+    i18n.js
+    index.js
+
+/api/<module>/
+    svg.js
+    stats.js
+
+/test/<module>/
+    *.test.js
+
+```
+
+Example
+
+```bash
+
+/lib/languages/
+    githubClient.js<method>
+    githubMapper.js<method>
+    githubQueris.js<query>
+    aggregateLanguages.js
+    buildLanguagesStats.js
+    calculateLanguagePercentages.js
+    renderLanguagesSvg.js
+    formatLanguagesJsonResponse.js
+    i18n.js<translate>
+
+```
+
+This allows you to:
+
+- add new modules without affecting existing ones
+- maintain a clean architecture
+- share infrastructure without coupling modules
+- test each module in isolation
+
+### Non-shared infrastructure
+
+- /lib/cache → Provides caching capabilities for all domains, but each domain implements its own dedicated cache method. Cache logic is not shared across domains.
+- /lib/github → Provides GitHub integration for all domains, but each domain implements its own dedicated github method. The only shared component is `githubResponse.js`, which is reused across all domains.
+- /lib/i18n → Provides base translations for all domains, but each domain implements its own dedicated i18n translations. The only shared translations are those under `errors`, which are reused across all domains
+
+### Shared infrastructure
+
+All modules reuse the following:
+
+- /lib/themes → theme system
+- /lib/shared/validators → validation
+- /lib/shared/errors → errors
+- /lib/http → error and response handling
+
+This avoids duplication and keeps the architecture clean.
 
 ### Modularity and Extensinility
 
@@ -155,7 +235,7 @@ The project is structured so that new features can be added without modifying ex
 
 Examples:
 
-- Adding a new output format (e.g., PNG) only touches `/lib/render`.
+- Adding a new output format (e.g., PNG) only touches the module’s renderer.
 - Adding a new GitHub query only touches `/lib/github`.
 - Adding a new theme only touches `/lib/themes`.
 
@@ -198,16 +278,18 @@ The architecture is intentionally structured so that:
 This makes the project reliable and contributor‑friendly.
 
 
-# Execution flow
+# Execution flow (modular)
 
+The flow is identical for all modules.
+The domain layer is different for each module (streak, languages, etc.), but the flow is identical.
 At a high level, the system processes a request in the following stages:
 
 #### HTTP request → API endpoint
 
 - The user embeds the SVG or JSON URL in their GitHub profile or README.
 - GitHub triggers an HTTP request to Vercel, hitting either:
-- `api/streak/stats.js` (JSON output), or
-- `api/streak/svg.js` (SVG output).
+- `api/<module>/stats.js` (JSON output), or
+- `api/<module>/svg.js` (SVG output).
 
 #### Input validation
 
@@ -224,18 +306,17 @@ At a high level, the system processes a request in the following stages:
 - githubResponse (normalizing and handling GitHub-specific errors).
 - Responses may be cached via contributionsCache to reduce API calls.
 
-#### Domain logic: streak calculation
+#### Domain logic: <module> calculation
 
 - Once contributions are available, the endpoint calls the domain layer:
-- calculateStreak computes current, longest, and total streaks.
-- buildYearBlocks prepares the yearly contribution structure when needed.
 - This layer is pure logic: no HTTP, no GitHub, no Vercel.
 
 #### Presentation: rendering the output
 
 - Based on the endpoint:
-- renderStreakSvg generates the SVG representation using the selected theme and language.
-- formatJsonResponse builds the JSON payload.
+- Each module has its own renderer under /lib/<module>/render.
+- render<module>Svg generates the SVG representation using the selected theme and language.
+- format<module>JsonResponse builds the JSON payload.
 - Themes are resolved via themes.js, while errors use a dedicated errorTheme.
 
 #### Error handling
@@ -263,7 +344,7 @@ At a high level, the system processes a request in the following stages:
 flowchart TD
 
     %% Entrada
-    A["HTTP Request<br/>/api/streak/stats or /api/streak/svg"] --> B["API Layer<br/>Validate input"]
+    A["HTTP Request<br/>/api/<module>/stats or /api/<module>/svg"] --> B["API Layer<br/>Validate input"]
 
     %% Validación
     B -->|Valid| C["Application Layer<br/>Orchestrate request"]
@@ -317,8 +398,12 @@ Focus on isolated logic
 
 - `calculateStreak`  (project core)
 - `validators` (user entry)
-- `renderStreakSvg` (visual output)
-- `formatJsonResponse` (alternative output)
+- `renderStreakSvg` (visual streak output)
+- `renderLanguagesSvg` (visual languages output)
+- `formatJsonResponse` (alternative streak output)
+- `aggregateLanguages` (add program languages)
+- `buildLanguagesStats` (buil languages stats)
+- `calculateLanguagePercentages` (calculate languages percentages)
 - `buildYearBlocksFromDate` (build years blocks)
 - `githubResponse`(handle errors)
 - `i18n`(translator module)
@@ -329,7 +414,9 @@ Focus on module interaction
 
 - `handleSvgError`(handle svg errors and translates error messages)
 - `svgEndpoint`(full request → SVG response)
-- `JsonEndpoint`(full request → JSON response)
+- `svgLanguagesEndpoint`(full request → SVG response)
+- `jsonEndpoint`(full request → JSON response)
+- `jsonLanguagesEndpoint`(full request → JSON response)
 - `handleJsonError`(handle json errors and translates error messages)
 
 ### Mocking strategy
@@ -404,6 +491,10 @@ test/
   streak/
     calculateStreak.test.js
     buildYearBlocks.test.js
+  languages/
+    aggregateLanguages.test.js
+    buildLanguagesStats.test.js
+    calculateLanguagePercentages.test.js  
   render/
     renderStreakSvg.test.js
     errorSvg.test.js
@@ -416,9 +507,11 @@ test/
     resolveLang.test.js
   integration
     handleSvgError.test.js
+    handleJsonError.test.js
     svgEndpoint.test.js
+    svgLanguagesEndpoint.test.js
     jsonEndpoint.test.js
-    handleJsonError.test.js    
+    jsonLanguagesEndpoint.test.js    
 
 ```
 
