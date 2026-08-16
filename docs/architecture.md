@@ -54,6 +54,9 @@ graph TD
         subgraph Streak Domain ["streak/"]
             S1["calculateStreak.js"]
             S2["buildYearBlocks.js"]
+            S3["calculateCurrentStreak.js"]
+            S4["calculateLongestStreak.js"]
+            S5["isConsecutiveDays.js"]
         end
 
         subgraph Rendering ["render/"]
@@ -169,22 +172,27 @@ This allows:
 
 ### Module Anatomy
 
-Each module of the project follows the same structure
+Each module (streak/languages) of the project follows the same structure
 
 ```bash
 
-/lib/<module>/
-    domain.js
-    renderSvg.js
-    formatJson.js
-    i18n.js
-    index.js
+/lib/
+    streak/
+    languages
+    cache/
+    github/
+    http/
+    ii18/
+    render/
+    shared/errors/
+    themes/
+    
 
-/api/<module>/
+/api/
     svg.js
     stats.js
 
-/test/<module>/
+/test/
     *.test.js
 
 ```
@@ -193,16 +201,25 @@ Example
 
 ```bash
 
-/lib/languages/
-    githubClient.js<method>
-    githubMapper.js<method>
-    githubQueris.js<query>
-    aggregateLanguages.js
-    buildLanguagesStats.js
-    calculateLanguagePercentages.js
-    renderLanguagesSvg.js
-    formatLanguagesJsonResponse.js
-    i18n.js<translate>
+/lib/
+    languages/
+        aggregateLanguages.js
+        buildLanguagesStats.js
+        calculateLanguagePercentages.js
+
+    github/
+        githubClient.js
+        githubMapper.js
+        githubQueries.js
+        githubResponse.js
+
+    render/
+        renderLanguagesSvg.js
+        formatLanguagesJsonResponse.js
+
+    i18n/
+        index.js
+        locales/
 
 ```
 
@@ -281,7 +298,7 @@ This makes the project reliable and contributor‑friendly.
 
 # Execution flow (modular)
 
-The flow is identical for all modules.
+The API execution flow is shared across all modules, while each module provides its own domain logic and module-specific infrastructure where required.
 The domain layer is different for each module (streak, languages, etc.), but the flow is identical.
 At a high level, the system processes a request in the following stages:
 
@@ -298,14 +315,21 @@ At a high level, the system processes a request in the following stages:
 - Input is validated using the utilities in `lib/shared/validators`.
 - If validation fails, a ValidationError is thrown and handled by the corresponding error handler (handleJsonError or handleSvgError).
 
+### Cache Lookup
+
+- The endpoint checks whether the requested data is already available in the module-specific cache.
+- If valid cached data exists, it is reused and no request to GitHub is required.
+- If no valid cached data exists, the endpoint proceeds with data retrieval from GitHub.
+- Cache implementations are module-specific, for example contributionsCache and languagesCache.
+
 #### Data retrieval from GitHub
 
-- The endpoint delegates to githubClient in `lib/github` to fetch contribution data.
+- When cached data is unavailable, the endpoint delegates to githubClient in lib/github to fetch the required data.
 - Queries and mappings are handled by:
 - githubQueries (GraphQL/REST queries),
 - githubMapper (mapping raw responses to internal models),
 - githubResponse (normalizing and handling GitHub-specific errors).
-- Responses may be cached via contributionsCache to reduce API calls.
+- Retrieved data may then be stored in the corresponding cache.
 
 #### Domain logic: <module> calculation
 
@@ -345,18 +369,22 @@ At a high level, the system processes a request in the following stages:
 flowchart TD
 
     %% Entrada
-    A["HTTP Request<br/>/api/module/stats or /svg"] --> B["API Layer<br/>Validate input"]
+    A["HTTP Request<br/>/api/module"] --> B["API Layer<br/>Validate input"]
 
     %% Validación
-    B -->|Valid| C["Application Layer<br/>Orchestrate request"]
-    B -->|Invalid| Z["Error Handler<br/>handleJsonError / handleSvgError"]
+    B -->|Valid| C["API<br/>Orchestrator"]
+    B -->|Invalid| Z["Error Handler<br/>handleJsonError</br>handleSvgError"]
+
+    %% Cache
+
+    C -->|Valid| F["Cache Lookup-->Hit<br/>Domain Layer<br/>streak<br/>languages"]
+    C -->|Invalid| D["Cache Lookup-->Miss<br/>Infraestructure Layer<br/>Github Client"]
 
     %% GitHub
-    C --> D["Infrastructure Layer<br/>GitHub Client + Cache"]
-    D --> E["Raw GitHub Data"]
+    D --> E["Infraestructure Layer<br/>GitHub Client"]
 
     %% Dominio
-    E --> F["Domain Layer<br/>calculateStreak<br/>buildYearBlocks"]
+    E --> F["Domain Layer<br/>streak<br/>languages"]
 
     %% Presentación
     F --> G["Presentation Layer<br/>SVG Renderer / JSON Formatter"]
@@ -365,8 +393,9 @@ flowchart TD
     G --> H["HTTP Response<br/>SVG or JSON"]
 
     %% Error flow
-    C -->|GitHub error| Z
-    D -->|API error| Z
+    B -->|API error| Z
+    C -->|Cache error| Z
+    D -->|GitHub error| Z
     F -->|Domain error| Z
     G -->|Render error| Z
 
@@ -492,6 +521,9 @@ test/
   streak/
     calculateStreak.test.js
     buildYearBlocks.test.js
+    calculateLongestStreak.test.js
+    calculateCurrentStreak.test.js
+    isConsecutiveDays.test.js
   languages/
     aggregateLanguages.test.js
     buildLanguagesStats.test.js
