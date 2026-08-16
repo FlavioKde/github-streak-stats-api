@@ -368,25 +368,27 @@ At a high level, the system processes a request in the following stages:
 
 flowchart TD
 
-    %% Entrada
+    %% Request
     A["HTTP Request<br/>/api/module"] --> B["API Layer<br/>Validate input"]
 
-    %% Validación
+    %% Api Layer
     B -->|Valid| C["API<br/>Orchestrator"]
     B -->|Invalid| Z["Error Handler<br/>handleJsonError</br>handleSvgError"]
 
     %% Cache
 
-    C -->|Valid| F["Cache Lookup-->Hit<br/>Domain Layer<br/>streak<br/>languages"]
-    C -->|Invalid| D["Cache Lookup-->Miss<br/>Infraestructure Layer<br/>Github Client"]
+    C --> D["Cache Lookup"]
 
-    %% GitHub
-    D --> E["Infraestructure Layer<br/>GitHub Client"]
+    %% Cache hit
+
+    D -->|Hit| F["Domain Layer<br/>streak<br/>languages"]
+
+    %% Cache Miss
+
+    D -->|Miss| E["Infraestructure Layer<br/>Github Client"]
+    E --> F
 
     %% Dominio
-    E --> F["Domain Layer<br/>streak<br/>languages"]
-
-    %% Presentación
     F --> G["Presentation Layer<br/>SVG Renderer / JSON Formatter"]
 
     %% Salida
@@ -395,7 +397,7 @@ flowchart TD
     %% Error flow
     B -->|API error| Z
     C -->|Cache error| Z
-    D -->|GitHub error| Z
+    E -->|GitHub error| Z
     F -->|Domain error| Z
     G -->|Render error| Z
 
