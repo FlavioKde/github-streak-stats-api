@@ -99,8 +99,9 @@ This makes the project:
 
 Provides GitHub contribution streak statistics, including:
 
-* Current streak
-* Longest streak
+* Calculate Current streak
+* Calculate Longest streak
+* Consecutie Days
 * Total contributions
 * Year contribution blocks
 * Multiple themes
