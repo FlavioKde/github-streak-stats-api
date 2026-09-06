@@ -1,15 +1,15 @@
 import { describe, it, expect } from 'vitest';
-import { mapGitHubContributions } from '../../../lib/github/mappers/mapGitHubContributions.js';
+import { mapGitHubContribution } from '../../../lib/github/mappers/mapGitHubContribution.js';
 
-describe('mapGitHubContributions', () => {
+describe('mapGitHubContribution', () => {
   it('should return an empty array when contributionsData is null', () => {
-    const result = mapGitHubContributions(null);
+    const result = mapGitHubContribution(null);
     expect(result).toEqual([]);
   });
 
     it('should return an empty array when contributionCalendar is missing', () => {
         const contributionsData = {};
-        const result = mapGitHubContributions(contributionsData);
+        const result = mapGitHubContribution(contributionsData);
         expect(result).toEqual([]);
     });
 
@@ -36,7 +36,7 @@ describe('mapGitHubContributions', () => {
                 ]
             }
         };
-        const result = mapGitHubContributions(contributionsData);
+        const result = mapGitHubContribution(contributionsData);
         expect(result).toEqual([
             {
                 date: '2023-01-01',
