@@ -14,8 +14,8 @@ vi.mock('../../lib/github/mappers/mapGitHubStars.js', () => ({
     mapGitHubStars: vi.fn()
 }));
 
-vi.mock('../../lib/github/mappers/mapGitHubContributions.js', () => ({
-    mapGitHubContributions: vi.fn()
+vi.mock('../../lib/github/mappers/mapGitHubContribution.js', () => ({
+    mapGitHubContribution: vi.fn()
 }));
 
 
@@ -25,7 +25,7 @@ import { mapGitHubCommits } from '../../lib/github/mappers/mapGitHubCommits.js';
 import { mapGitHubPrs } from '../../lib/github/mappers/mapGitHubPrs.js';
 import { mapGitHubIssues } from '../../lib/github/mappers/mapGitHubIssues.js';
 import { mapGitHubStars } from '../../lib/github/mappers/mapGitHubStars.js';
-import { mapGitHubContributions } from '../../lib/github/mappers/mapGitHubContributions.js';    
+import { mapGitHubContribution } from '../../lib/github/mappers/mapGitHubContribution.js';    
 
 
 afterEach(() => {
@@ -58,7 +58,7 @@ describe('mapGitHubActivity', () => {
         mapGitHubPrs.mockReturnValue([{ date: "2026-08-02" }]);
         mapGitHubIssues.mockReturnValue([{ date: "2026-08-03" }]);
         mapGitHubStars.mockReturnValue(5);
-        mapGitHubContributions.mockReturnValue([{ date: "2026-08-04", contributionCount: 10 }]);
+        mapGitHubContribution.mockReturnValue([{ date: "2026-08-04", contributionCount: 10 }]);
 
         const result = mapGitHubActivity(activityData);
         
@@ -70,7 +70,7 @@ describe('mapGitHubActivity', () => {
         expect(result.issues).toEqual([{ date: "2026-08-03" }]);
         expect(mapGitHubStars).toHaveBeenCalledWith(activityData.stars);
         expect(result.stars).toEqual(5);
-        expect(mapGitHubContributions).toHaveBeenCalledWith(activityData.contributions);
+        expect(mapGitHubContribution).toHaveBeenCalledWith(activityData.contributions);
         expect(result.contributions).toEqual([{ date: "2026-08-04", contributionCount: 10 }]);
         });
     });
