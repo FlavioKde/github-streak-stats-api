@@ -26,7 +26,10 @@ export default async function handler(req, res) {
 
     const contributions = await getCachedContributions(fetchUserContributions, user);
 
+    console.log('DATA SENT TO calculateStreak:', contributions);
+console.log('DATA LENGTH:', contributions?.length);
     const streakData = calculateStreak(contributions);
+    console.log('STREAK RESULT:', streakData);
 
     const svg = renderStreakSvg( streakData, selectedTheme, t);
 
