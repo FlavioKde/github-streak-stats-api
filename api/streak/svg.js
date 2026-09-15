@@ -9,7 +9,6 @@ import { getTheme } from '../../lib/themes/themes.js';
 import { createTranslator } from '../../lib/i18n/index.js';
 
 
-
 export default async function handler(req, res) {
 
   const lang = req.query.lang;
@@ -26,10 +25,7 @@ export default async function handler(req, res) {
 
     const contributions = await getCachedContributions(fetchUserContributions, user);
 
-    console.log('DATA SENT TO calculateStreak:', contributions);
-console.log('DATA LENGTH:', contributions?.length);
     const streakData = calculateStreak(contributions);
-    console.log('STREAK RESULT:', streakData);
 
     const svg = renderStreakSvg( streakData, selectedTheme, t);
 
@@ -40,7 +36,6 @@ console.log('DATA LENGTH:', contributions?.length);
         });
 
   } catch (error) {
-
 
     handleSvgError(res, error, lang);
       
